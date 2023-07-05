@@ -51,8 +51,6 @@ public class PlayerMovement : MonoBehaviour
         move.y = Input.GetAxis("Vertical");
         move = move.normalized;
 
-        // transform.Translate(move * speed * Time.deltaTime);
-
         float xMove = move.x * speed * Time.deltaTime;
         float yMove = move.y * speed * Time.deltaTime;
         Vector2 newPos = new Vector2(body.position.x + xMove, body.position.y + yMove);
