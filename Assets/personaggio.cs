@@ -6,7 +6,7 @@ public class pallina : MonoBehaviour
 {
     public float speed;
     private Vector2 move;
-    bool oldUp;
+    bool yMovingOld;
 
     void Start()
     {
@@ -19,10 +19,9 @@ public class pallina : MonoBehaviour
         bool xMoving = move.x != 0;
         bool yMoving = move.y != 0;
 
-
         if (xMoving && yMoving)
         {
-            if (oldUp)
+            if (yMovingOld)
                 move.y = 0;
             else
                 move.x = 0;
@@ -30,12 +29,12 @@ public class pallina : MonoBehaviour
         else if (xMoving)
         {
             move.y = 0;
-            oldUp = false;
+            yMovingOld = false;
         }
         else if (yMoving)
         {
             move.x = 0;
-            oldUp = true;
+            yMovingOld = true;
         }
         else
         {
