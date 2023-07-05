@@ -58,4 +58,11 @@ public class PlayerMovement : MonoBehaviour
         Vector2 newPos = new Vector2(body.position.x + xMove, body.position.y + yMove);
         body.MovePosition(newPos);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        collision.gameObject.SetActive(false);
+        speed = 30;
+        return;
+    }
 }
