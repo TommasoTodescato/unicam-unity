@@ -48,13 +48,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        move.x = Input.GetAxis("Horizontal");
-        move.y = Input.GetAxis("Vertical");
+        move.x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        move.y = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         move = move.normalized;
 
-        float xMove = move.x * speed * Time.deltaTime;
-        float yMove = move.y * speed * Time.deltaTime;
-        Vector2 newPos = new Vector2(body.position.x + xMove, body.position.y + yMove);
+        Vector2 newPos = new Vector2(body.position.x + move.x, body.position.y + move.y);
         body.MovePosition(newPos);
     }
 

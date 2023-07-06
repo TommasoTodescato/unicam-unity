@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public int speed;
-    public int shootSpeed;
-    private Vector2 move;
+    public float speed;
     private Rigidbody2D body;
     
     void Start()
@@ -16,22 +14,12 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            body.AddForce(transform.up * shootSpeed, ForceMode2D.Impulse);
-
-        move.x = Input.GetAxis("Horizontal");
-        if(move.x != 0)
-        {
-            float xMove = move.x * speed * Time.deltaTime;
-            Vector2 newPos = new Vector2(body.position.x + xMove, body.position.y);
-            body.MovePosition(newPos);
-        }
+        body.velocity = transform.up * speed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        collision.gameObject.SetActive(false);
-        body.velocity = Vector2.zero;
-        body.MovePosition(new Vector2(59, -6));
+        Destroy(collision.gameObject);
+        Destroy(gameObject);
     }
 }
