@@ -1463,6 +1463,8 @@ MonoBehaviour:
   speed: 50
   bulletPrefab: {fileID: 1081746631860806588, guid: 4b78895809babab4989b3857178c8223, type: 3}
   superBulletPrefab: {fileID: 4360496306433214051, guid: 191fa3f9466ee0941b910b2dee1b3831, type: 3}
+  cooldown: 0.3
+  superCooldown: 3
 --- !u!61 &323795954
 BoxCollider2D:
   m_ObjectHideFlags: 0

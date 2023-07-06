@@ -11,8 +11,9 @@ public class PlayerShip : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject superBulletPrefab;
 
-    private bool canShoot = true;
     private float cooldown = 0.3f;
+    private float superCooldown = 3.0f;
+    private bool canShoot = true, canSuper = true;
 
     void Start()
     {
@@ -38,15 +39,22 @@ public class PlayerShip : MonoBehaviour
             StartCoroutine(reload());
         }
 
-        if (Input.GetKeyDown(KeyCode.F) && canShoot)
+        if (Input.GetKeyDown(KeyCode.F) && canSuper)
         {
             Vector2 superBulletPos = new Vector2(transform.position.x, transform.position.y + transform.localScale.y / 2);
             GameObject superBullet = Instantiate(superBulletPrefab, superBulletPos, transform.rotation);
 
             superBullet.transform.parent = transform.parent;
 
-            StartCoroutine(reload());
+            StartCoroutine(superReload());
         }
+
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+        if (canSuper)
+            renderer.color = Color.yellow;
+        else
+            renderer.color = Color.white;
+
     }
 
     System.Collections.IEnumerator reload()
@@ -54,5 +62,12 @@ public class PlayerShip : MonoBehaviour
         canShoot = false;
         yield return new WaitForSeconds(cooldown);
         canShoot = true;
+    }
+
+    System.Collections.IEnumerator superReload()
+    {
+        canSuper = false;
+        yield return new WaitForSeconds(superCooldown);
+        canSuper = true;
     }
 }
