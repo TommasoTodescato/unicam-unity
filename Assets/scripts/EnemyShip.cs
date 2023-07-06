@@ -21,8 +21,8 @@ void Update()
     {
         move.x = speed;
         Vector2 newPos = new Vector2(body.position.x + move.x, body.position.y);
-
-        bool isOut = transform.position.x > screenLimits.x || transform.position.x < -screenLimits.x;
+        bool isOut = transform.position.x > screenLimits.x + 40 || transform.position.x < -screenLimits.x;
+        
         if (isOut)
             newPos = new Vector2(-screenLimits.x + 0.5f, body.position.y - 2.0f);
 

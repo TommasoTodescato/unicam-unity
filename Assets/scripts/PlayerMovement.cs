@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(collision.gameObject);
-        SceneManager.LoadScene("galaga");
+        SceneManager.LoadScene("spaceships");
         return;
     }
 }
