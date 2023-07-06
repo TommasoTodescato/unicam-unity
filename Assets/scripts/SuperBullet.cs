@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class SuperBullet : MonoBehaviour
 {
     public float speed;
     private Rigidbody2D body;
@@ -16,13 +16,14 @@ public class Bullet : MonoBehaviour
         screenLimits = screen.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
     }
 
+
     void Update()
     {
         body.velocity = transform.up * speed;
 
-        bool isOut =    transform.position.y > screenLimits.y     ||
-                        transform.position.y < -screenLimits.y    ||
-                        transform.position.x > screenLimits.x     || 
+        bool isOut = transform.position.y > screenLimits.y ||
+                        transform.position.y < -screenLimits.y ||
+                        transform.position.x > screenLimits.x ||
                         transform.position.x < -screenLimits.x;
         if (isOut)
             Destroy(gameObject);
@@ -31,6 +32,5 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(collision.gameObject);
-        Destroy(gameObject);
     }
 }

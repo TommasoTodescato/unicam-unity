@@ -9,6 +9,7 @@ public class PlayerShip : MonoBehaviour
     private Rigidbody2D body;
 
     public GameObject bulletPrefab;
+    public GameObject superBulletPrefab;
 
     private bool canShoot = true;
     private float cooldown = 0.3f;
@@ -33,6 +34,16 @@ public class PlayerShip : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, bulletPos, transform.rotation);
 
             bullet.transform.parent = transform.parent;
+
+            StartCoroutine(reload());
+        }
+
+        if (Input.GetKeyDown(KeyCode.F) && canShoot)
+        {
+            Vector2 superBulletPos = new Vector2(transform.position.x, transform.position.y + transform.localScale.y / 2);
+            GameObject superBullet = Instantiate(superBulletPrefab, superBulletPos, transform.rotation);
+
+            superBullet.transform.parent = transform.parent;
 
             StartCoroutine(reload());
         }
