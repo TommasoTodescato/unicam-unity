@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  body: {fileID: 0}
+  screen: {fileID: 2578144037930689496, guid: db0954bd8a0d20e49b736f784751d6e2, type: 3}
 --- !u!50 &2265149902712630501
 Rigidbody2D:
   serializedVersion: 4

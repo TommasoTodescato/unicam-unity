@@ -10,6 +10,9 @@ public class PlayerShip : MonoBehaviour
 
     public GameObject bulletPrefab;
 
+    private bool canShoot = true;
+    private float cooldown = 0.3f;
+
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -24,12 +27,21 @@ public class PlayerShip : MonoBehaviour
             body.MovePosition(newPos);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && canShoot)
         {
             Vector2 bulletPos = new Vector2(transform.position.x, transform.position.y + transform.localScale.y / 2);
             GameObject bullet = Instantiate(bulletPrefab, bulletPos, transform.rotation);
 
             bullet.transform.parent = transform.parent;
+
+            StartCoroutine(reload());
         }
+    }
+
+    System.Collections.IEnumerator reload()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(cooldown);
+        canShoot = true;
     }
 }
