@@ -37,7 +37,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed;
+    public float speed = 0.1f;
     private Vector2 move;
     private Rigidbody2D body;
 
@@ -48,12 +48,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        move.x = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        move.y = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        move = move.normalized;
-
-        Vector2 newPos = new Vector2(body.position.x + move.x, body.position.y + move.y);
-        body.MovePosition(newPos);
+        move.x = (Input.GetAxis("Horizontal") * speed * Time.deltaTime);
+        move.y = (Input.GetAxis("Vertical") * speed * Time.deltaTime);
+        if (move.x != 0 || move.y != 0)
+        {
+            Vector2 newPos = new Vector2(body.position.x + move.x, body.position.y + move.y);
+            body.MovePosition(newPos);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

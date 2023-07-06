@@ -31,6 +31,7 @@ public class SuperBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
+        if (collision.gameObject != GameObject.Find("ship"))
+            Destroy(collision.gameObject);
     }
 }

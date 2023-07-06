@@ -30,7 +30,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
-        Destroy(gameObject);
+        if (collision.gameObject != GameObject.Find("ship"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+
     }
 }

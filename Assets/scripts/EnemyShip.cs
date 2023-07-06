@@ -17,7 +17,7 @@ public class EnemyShip : MonoBehaviour
         screenLimits = screen.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
     }
 
-void Update()
+    void Update()
     {
         move.x = speed;
         Vector2 newPos = new Vector2(body.position.x + move.x, body.position.y);
@@ -27,5 +27,10 @@ void Update()
             newPos = new Vector2(-screenLimits.x + 0.5f, body.position.y - 2.0f);
 
         body.MovePosition(newPos);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Destroy(collision.gameObject);
     }
 }
