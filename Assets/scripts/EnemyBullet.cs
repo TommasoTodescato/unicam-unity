@@ -31,10 +31,15 @@ public class EnemyBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        GameObject ship = GameObject.Find("ship");
         if (collision.gameObject == GameObject.Find("ship"))
         {
-            Destroy(collision.gameObject);
             Destroy(gameObject);
+            ship.GetComponent<PlayerShip>().life -= 1;
+            if (ship.GetComponent<PlayerShip>().life == 0)
+            {
+                Destroy(collision.gameObject);
+            }
         }
     }
 }

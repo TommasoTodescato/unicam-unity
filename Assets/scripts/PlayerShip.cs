@@ -15,6 +15,8 @@ public class PlayerShip : MonoBehaviour
     private float superCooldown = 3.0f;
     private bool canShoot = true, canSuper = true;
 
+    public int life = 3;
+
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -70,4 +72,11 @@ public class PlayerShip : MonoBehaviour
         yield return new WaitForSeconds(superCooldown);
         canSuper = true;
     }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    life = life - 1;
+    //    if (life <= 0)
+    //        Destroy(gameObject);
+    //}
 }
