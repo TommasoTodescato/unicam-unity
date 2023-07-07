@@ -72,11 +72,4 @@ public class PlayerShip : MonoBehaviour
         yield return new WaitForSeconds(superCooldown);
         canSuper = true;
     }
-
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    life = life - 1;
-    //    if (life <= 0)
-    //        Destroy(gameObject);
-    //}
 }
