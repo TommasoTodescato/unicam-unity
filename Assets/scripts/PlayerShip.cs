@@ -11,8 +11,8 @@ public class PlayerShip : MonoBehaviour
     public GameObject bulletPrefab;
     public GameObject superBulletPrefab;
 
-    private float cooldown = 0.3f;
-    private float superCooldown = 3.0f;
+    private float cooldown = 0.4f;
+    private float superCooldown = 5.0f;
     private bool canShoot = true, canSuper = true;
 
     public int life = 3;

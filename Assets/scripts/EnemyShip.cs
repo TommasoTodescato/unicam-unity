@@ -54,6 +54,8 @@ public class EnemyShip : MonoBehaviour
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject == GameObject.Find("superBullet"))
+            Destroy(gameObject);
     }
 
     System.Collections.IEnumerator reload()
