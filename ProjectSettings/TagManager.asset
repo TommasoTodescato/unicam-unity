@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: sopra
+    uniqueID: 3675607467
+    locked: 0
